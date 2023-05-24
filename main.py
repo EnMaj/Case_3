@@ -1,14 +1,14 @@
 import ru_local as ru
 import random
 
-action_15_int=[0,0,0,0,0,0]
-action_15_print = [ru.ACTION_15_1,ru.ACTION_15_2,ru.ACTION_15_3,ru.ACTION_15_4,ru.ACTION_15_5,ru.ACTION_15_6]
-random_events_15_9 = [ru.RANDOM_EVENT_15_9_1,ru.RANDOM_EVENT_15_9_2,ru.RANDOM_EVENT_15_9_3]
-friendli_list = [ru.FRIENDS_1,ru.FRIENDS_2,ru.FRIENDS_3,ru.FRIENDS_4]
-friendly_scale = [15,15,15,15]
-romantic_scale = [-10,-10,-10,-10]
+action_15_int = [0, 0, 0, 0, 0, 0]
+action_15_print = [ru.ACTION_15_1, ru.ACTION_15_2, ru.ACTION_15_3, ru.ACTION_15_4, ru.ACTION_15_5, ru.ACTION_15_6]
+random_events_15_9 = [ru.RANDOM_EVENT_15_9_1, ru.RANDOM_EVENT_15_9_2, ru.RANDOM_EVENT_15_9_3]
+friendli_list = [ru.FRIENDS_1, ru.FRIENDS_2, ru.FRIENDS_3, ru.FRIENDS_4]
+friendly_scale = [15, 15, 15, 15]
+romantic_scale = [-10, -10, -10, -10]
 
-skill = [0,0,0,0,0,0]
+skill = [0, 0, 0, 0, 0, 0]
 design = 0
 programming = 0
 poetry = 0
@@ -23,7 +23,6 @@ money = 0
 
 factor_health = 0.2
 factor_happiness = 0.2
-factor_money = 0.2
 
 computer = False
 
@@ -34,33 +33,33 @@ choice = int(input())
 if choice == 1:
     computer = True
 elif choice == 2:
-    money+=500*factor_money
+    money += 500
 elif choice == 3:
     dancing += 10
 
 print(ru.INF_MESSAGE_1)
 
-#Перечисление действий в первые 15 лет
-for i in range(0,6):
-    print(str(i+1) + ". " + str(action_15_print[i]))
+# Перечисление действий в первые 15 лет
+for i in range(0, 6):
+    print(str(i + 1) + ". " + str(action_15_print[i]))
 
-#распределение очков действия за первые 15 лет
-while action>0:
-    number,quantity = map(int,input().split(" "))
-    if quantity<=action:
-        action_15_int[number-1] += quantity
+# распределение очков действия за первые 15 лет
+while action > 0:
+    number, quantity = map(int, input().split(" "))
+    if quantity <= action:
+        action_15_int[number - 1] += quantity
         action -= quantity
     else:
         print(ru.ACTION_ERROR)
         continue
 
-#Рандомные события за первые 15 лет
+# Рандомные события за первые 15 лет
 print(ru.INF_MESSAGE_RANDOM_1)
 random_events_or = random.randint(0, 100)
-#random_events_or = 2
-if random_events_or%2==0:
+# random_events_or = 2
+if random_events_or % 2 == 0:
     random_events_number = random.randint(0, 10)
-#    random_events_number = 8
+    #    random_events_number = 8
     if random_events_number == 10:
         print(ru.RANDOM_EVENT_15_11)
         exit(0)
@@ -68,18 +67,18 @@ if random_events_or%2==0:
         print(ru.RANDOM_EVENT_15_10)
         yes_no_flag = input(ru.RANDOM_EVENT_15_10_question)
         if yes_no_flag.upper() == "ДА":
-            if random.randint(0,100)%2==0:
+            if random.randint(0, 100) % 2 == 0:
                 print(ru.RANDOM_EVENT_15_10_3)
-            elif random_events_number%5==0:
+            elif random_events_number % 5 == 0:
                 print(ru.RANDOM_EVENT_15_10_2)
-                health -=30
-            elif random_events_number%3:
+                health -= 30
+            elif random_events_number % 3:
                 print(ru.RANDOM_EVENT_15_10_1)
-                health +=20
+                health += 20
     if random_events_number == 8:
         print(ru.RANDOM_EVENT_15_9)
         for i in range(3):
-            print(str(i+1) + ". " + random_events_15_9[i])
+            print(str(i + 1) + ". " + random_events_15_9[i])
         number_flag = int(input(ru.RANDOM_EVENT_15_9_question))
     if random_events_number == 7:
         print(ru.RANDOM_EVENT_15_8)
@@ -107,11 +106,10 @@ if random_events_or%2==0:
         factor_money = 3
 else:
     print(ru.RANDOM_EVENT_NO)
-health = 100 + action_15_int[4]*2 + action_15_int[5]
-happiness = 50 + action_15_int[0]*2 + action_15_int[2]*2 + action_15_int[3]*3
-money = 0
+health = 100 + action_15_int[4] * 2 + action_15_int[5]
+happiness = 50 + action_15_int[0] * 2 + action_15_int[2] * 2 + action_15_int[3] * 3
 
-design = (design + action_15_int[2]*2)*(action_15_int[1]*0.5)
+design = (design + action_15_int[2] * 2) * (action_15_int[1] * 0.5)
 programming = 0
 poetry = 0
 dancing = 0 + action_15_int[5]
@@ -119,10 +117,10 @@ english = 0
 music = 0
 
 for i in range(4):
-    friendly_scale[i]+=action_15_int[0]*2
+    friendly_scale[i] += action_15_int[0] * 2
 
 print(ru.INF_MESSAGE_2)
-
+"""
 while health>0 and happiness>0:
     for i in range(16,26):
         if health<0 or happiness<0:
@@ -214,9 +212,76 @@ while health>0 and happiness>0:
             else:
                 print(ru.ACTION_ERROR)
                 continue
+"""
 
+print(ru.INF_MESSAGE_4_1)
+for i in range(0, 6):
+    print(f'{str(i + 1)}. {str(action_15_print[i])}: {str(action_15_int[i])}')
 
+print(ru.INF_MESSAGE_4_2)
 
+is_alive = True
+action_daily = [
+    ru.ACTION_DAILY_1,
+    ru.ACTION_DAILY_2,
+    ru.ACTION_DAILY_3,
+    ru.ACTION_DAILY_4,
+    ru.ACTION_DAILY_5,
+    ru.ACTION_DAILY_6,
+    ru.ACTION_DAILY_7,
+    ru.ACTION_DAILY_8,
+    ru.ACTION_DAILY_9,
+    ru.ACTION_DAILY_10,
+    ru.ACTION_DAILY_11,
+    ru.ACTION_DAILY_12,
+    ru.ACTION_DAILY_13
+]
 
+while is_alive:
+    health_temp = health
+    money_temp = money
+    happiness_temp = happiness
+
+    print(ru.INF_MESSAGE_5_1, health)
+    print(ru.INF_MESSAGE_5_2, money)
+    print(ru.INF_MESSAGE_5_3, happiness)
+    print(ru.INF_MESSAGE_5_4)
+    for i in range(0, 13):
+        print(f'{str(i + 1)}. {str(action_daily[i])}')
+    choice = int(input())
+
+    if choice == 1:
+        health_temp += 3
+        money_temp -= 100
+    elif choice == 2:
+        health_temp += 1
+        money_temp -= 1000
+        happiness_temp += 100
+    elif choice == 3:
+        health_temp -= 1
+    elif choice == 4:
+        health_temp -= 2
+        money_temp += 1000
+        happiness_temp -= 100
+    elif choice == 5:
+        happiness_temp += 50
+    # elif choice == 6:
+    # elif choice == 7:
+    # elif choice == 8:
+    # elif choice == 9:
+    # elif choice == 10:
+    # elif choice == 11:
+    # elif choice == 12:
+    elif choice == 13:
+        is_alive = False
+        exit(0)
+
+    if health_temp < 0 or money_temp < 0 or happiness_temp < 0:
+        print(ru.ACTION_DAILY_ERROR)
+        continue
+
+    health = health_temp - 1
+    money = money_temp - 100
+    happiness = happiness_temp - 10
 
 print("Вы умерли. Игра закончилась. Поздравляю!")
